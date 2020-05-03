@@ -6,6 +6,7 @@
 <div >
 
 <?= $this->fetch('content') ?>
+
 </div>
 </body>
 </html>

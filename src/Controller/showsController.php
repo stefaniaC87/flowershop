@@ -16,13 +16,14 @@ class showsController extends AppController{
         
         ]);
 
-   foreach($query as $row){
-       echo '<li>Nome: ' .  $row->name . '</li>';
-       foreach($row->occasions as $occasion){
-        echo '<li>Occasione: ' . $occasion->name . '</li>' . '<li> Descrizione ' . $occasion->description . '</li>'  . '<br>';
-       }
-   }
+        foreach($query as $row){
+            echo '<li>Nome: ' .  $row->name . '</li>';
+            foreach($row->occasions as $occasion){
+             echo '<li>Occasione: ' . $occasion->name . '</li>' . '<li> Descrizione ' . $occasion->description . '</li>'  . '<br>';
+            }
+        }
 
+     
    //die('testo di prova');
    //debug($row);
     }
