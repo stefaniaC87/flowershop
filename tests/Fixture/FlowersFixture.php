@@ -47,8 +47,8 @@ class FlowersFixture extends TestFixture
                 'occasion' => 'Lorem ipsum dolor sit amet',
                 'cost' => 1,
                 'quantity' => 1,
-                'created' => '2020-05-03 12:37:26',
-                'modified' => '2020-05-03 12:37:26',
+                'created' => '2020-05-03 16:02:17',
+                'modified' => '2020-05-03 16:02:17',
             ],
         ];
         parent::init();
