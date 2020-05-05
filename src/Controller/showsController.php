@@ -21,20 +21,7 @@ class ShowsController extends AppController{
                 echo '<li>Fiori per occasione: ' . $flower->name .  '</li><br>' ;
             }
         }
-        /* $flowers = TableRegistry::getTableLocator()->get('flowers');
-        
-        $query = $flowers-> find('all',[
-            'contain' =>['occasions'],
-            
-        
-        ]);
-
-        foreach($query as $row){
-            echo '<li>Nome: ' .  $row->name . '</li>' ;
-            foreach($row->occasions as $occasion){
-             echo  '<li> Descrizione ' . $occasion->name . '</li>'  . '<br>';
-            }
-        } */
+       
    
 
    //die('testo di prova');
