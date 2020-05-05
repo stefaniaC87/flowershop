@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 03, 2020 alle 14:51
+-- Creato il: Mag 05, 2020 alle 15:02
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.3
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `flowers` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `occasion` varchar(32) NOT NULL,
+  `occasion_id` int(11) NOT NULL,
   `cost` double NOT NULL,
   `quantity` int(11) NOT NULL,
   `created` datetime NOT NULL,
@@ -42,9 +42,10 @@ CREATE TABLE `flowers` (
 -- Dump dei dati per la tabella `flowers`
 --
 
-INSERT INTO `flowers` (`id`, `name`, `occasion`, `cost`, `quantity`, `created`, `modified`) VALUES
-(1, 'Rose', 'Compleanno', 10, 2, '2020-05-03 12:40:50', '2020-05-03 12:40:50'),
-(2, 'Mimose', 'Festa della donna', 5, 10, '2020-05-03 12:41:25', '2020-05-03 12:41:25');
+INSERT INTO `flowers` (`id`, `name`, `occasion_id`, `cost`, `quantity`, `created`, `modified`) VALUES
+(1, 'Rose', 2, 10, 2, '2020-05-03 12:40:50', '2020-05-03 12:40:50'),
+(2, 'Mimose', 1, 5, 10, '2020-05-03 12:41:25', '2020-05-03 12:41:25'),
+(3, 'Calla', 3, 20, 30, '2020-05-05 13:01:21', '2020-05-05 13:01:21');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,6 @@ CREATE TABLE `occasions` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `description` varchar(32) NOT NULL,
-  `flower_id` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -65,9 +65,10 @@ CREATE TABLE `occasions` (
 -- Dump dei dati per la tabella `occasions`
 --
 
-INSERT INTO `occasions` (`id`, `name`, `description`, `flower_id`, `created`, `modified`) VALUES
-(1, 'Festa della donna', 'Fiori per omaggiare le donne', 2, '2020-05-03 12:48:31', '2020-05-03 12:48:31'),
-(2, 'Compleanno', 'Per festeggiare il compleanno', 1, '2020-05-03 12:49:14', '2020-05-03 12:49:14');
+INSERT INTO `occasions` (`id`, `name`, `description`, `created`, `modified`) VALUES
+(1, 'Festa della donna', 'Fiori per omaggiare le donne', '2020-05-03 12:48:31', '2020-05-03 12:48:31'),
+(2, 'Compleanno', 'Per festeggiare il compleanno', '2020-05-03 12:49:14', '2020-05-03 12:49:14'),
+(3, 'Matrimonio', 'cerimonia matrimonio', '2020-05-05 11:12:30', '2020-05-05 11:12:30');
 
 --
 -- Indici per le tabelle scaricate
@@ -77,14 +78,14 @@ INSERT INTO `occasions` (`id`, `name`, `description`, `flower_id`, `created`, `m
 -- Indici per le tabelle `flowers`
 --
 ALTER TABLE `flowers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `occasion_id` (`occasion_id`);
 
 --
 -- Indici per le tabelle `occasions`
 --
 ALTER TABLE `occasions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `flower_id` (`flower_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -94,13 +95,13 @@ ALTER TABLE `occasions`
 -- AUTO_INCREMENT per la tabella `flowers`
 --
 ALTER TABLE `flowers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `occasions`
 --
 ALTER TABLE `occasions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

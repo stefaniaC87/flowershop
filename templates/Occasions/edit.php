@@ -24,7 +24,6 @@
                 <?php
                     echo $this->Form->control('name');
                     echo $this->Form->control('description');
-                    echo $this->Form->control('flower_id', ['options' => $flowers]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

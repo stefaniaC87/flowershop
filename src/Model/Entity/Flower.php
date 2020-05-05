@@ -10,13 +10,13 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property string $occasion
+ * @property int $occasion_id
  * @property float $cost
  * @property int $quantity
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\Occasion[] $occasions
+ * @property \App\Model\Entity\Occasion $occasion
  */
 class Flower extends Entity
 {
@@ -31,11 +31,11 @@ class Flower extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'occasion' => true,
+        'occasion_id' => true,
         'cost' => true,
         'quantity' => true,
         'created' => true,
         'modified' => true,
-        'occasions' => true,
+        'occasion' => true,
     ];
 }

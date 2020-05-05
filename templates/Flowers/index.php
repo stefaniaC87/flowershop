@@ -13,7 +13,7 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('occasion') ?></th>
+                    <th><?= $this->Paginator->sort('occasion_id') ?></th>
                     <th><?= $this->Paginator->sort('cost') ?></th>
                     <th><?= $this->Paginator->sort('quantity') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
@@ -26,7 +26,7 @@
                 <tr>
                     <td><?= $this->Number->format($flower->id) ?></td>
                     <td><?= h($flower->name) ?></td>
-                    <td><?= h($flower->occasion) ?></td>
+                    <td><?= $flower->has('occasion') ? $this->Html->link($flower->occasion->name, ['controller' => 'Occasions', 'action' => 'view', $flower->occasion->id]) : '' ?></td>
                     <td><?= $this->Number->format($flower->cost) ?></td>
                     <td><?= $this->Number->format($flower->quantity) ?></td>
                     <td><?= h($flower->created) ?></td>

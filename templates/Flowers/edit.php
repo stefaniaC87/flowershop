@@ -23,7 +23,7 @@
                 <legend><?= __('Edit Flower') ?></legend>
                 <?php
                     echo $this->Form->control('name');
-                    echo $this->Form->control('occasion');
+                    echo $this->Form->control('occasion_id', ['options' => $occasions]);
                     echo $this->Form->control('cost');
                     echo $this->Form->control('quantity');
                 ?>

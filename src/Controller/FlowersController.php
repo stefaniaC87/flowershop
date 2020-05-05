@@ -18,6 +18,9 @@ class FlowersController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Occasions'],
+        ];
         $flowers = $this->paginate($this->Flowers);
 
         $this->set(compact('flowers'));
@@ -56,7 +59,8 @@ class FlowersController extends AppController
             }
             $this->Flash->error(__('The flower could not be saved. Please, try again.'));
         }
-        $this->set(compact('flower'));
+        $occasions = $this->Flowers->Occasions->find('list', ['limit' => 200]);
+        $this->set(compact('flower', 'occasions'));
     }
 
     /**
@@ -80,7 +84,8 @@ class FlowersController extends AppController
             }
             $this->Flash->error(__('The flower could not be saved. Please, try again.'));
         }
-        $this->set(compact('flower'));
+        $occasions = $this->Flowers->Occasions->find('list', ['limit' => 200]);
+        $this->set(compact('flower', 'occasions'));
     }
 
     /**

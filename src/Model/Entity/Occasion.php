@@ -11,11 +11,10 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string $description
- * @property int $flower_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\Flower $flower
+ * @property \App\Model\Entity\Flower[] $flowers
  */
 class Occasion extends Entity
 {
@@ -31,9 +30,8 @@ class Occasion extends Entity
     protected $_accessible = [
         'name' => true,
         'description' => true,
-        'flower_id' => true,
         'created' => true,
         'modified' => true,
-        'flower' => true,
+        'flowers' => true,
     ];
 }

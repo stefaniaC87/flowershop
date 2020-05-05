@@ -14,7 +14,6 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('description') ?></th>
-                    <th><?= $this->Paginator->sort('flower_id') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -26,7 +25,6 @@
                     <td><?= $this->Number->format($occasion->id) ?></td>
                     <td><?= h($occasion->name) ?></td>
                     <td><?= h($occasion->description) ?></td>
-                    <td><?= $occasion->has('flower') ? $this->Html->link($occasion->flower->name, ['controller' => 'Flowers', 'action' => 'view', $occasion->flower->id]) : '' ?></td>
                     <td><?= h($occasion->created) ?></td>
                     <td><?= h($occasion->modified) ?></td>
                     <td class="actions">

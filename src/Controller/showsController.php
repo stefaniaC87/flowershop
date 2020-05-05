@@ -7,9 +7,22 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 
-class showsController extends AppController{
+class ShowsController extends AppController{
     public function mostra(){
-        $flowers = TableRegistry::getTableLocator()->get('Flowers');
+        
+        $occasions = TableRegistry::getTableLocator()->get('occasions');
+        $query = $occasions->find('all', [
+            'contain' => ['flowers']
+        ]);
+
+        foreach($query as $row){
+            echo '<li>Occasione: '.  $row->name . '</li>' .'<li>Descrizione occasione: ' . $row->description . '</li>';
+            foreach($row->flowers as $flower){
+                echo '<li>Fiori per occasione: ' . $flower->name .  '</li><br>' ;
+            }
+        }
+        /* $flowers = TableRegistry::getTableLocator()->get('flowers');
+        
         $query = $flowers-> find('all',[
             'contain' =>['occasions'],
             
@@ -17,13 +30,13 @@ class showsController extends AppController{
         ]);
 
         foreach($query as $row){
-            echo '<li>Nome: ' .  $row->name . '</li>';
+            echo '<li>Nome: ' .  $row->name . '</li>' ;
             foreach($row->occasions as $occasion){
-             echo '<li>Occasione: ' . $occasion->name . '</li>' . '<li> Descrizione ' . $occasion->description . '</li>'  . '<br>';
+             echo  '<li> Descrizione ' . $occasion->name . '</li>'  . '<br>';
             }
-        }
+        } */
+   
 
-     
    //die('testo di prova');
    //debug($row);
     }

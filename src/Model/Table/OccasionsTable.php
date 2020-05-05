@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Occasions Model
  *
- * @property \App\Model\Table\FlowersTable&\Cake\ORM\Association\BelongsTo $Flowers
+ * @property \App\Model\Table\FlowersTable&\Cake\ORM\Association\HasMany $Flowers
  *
  * @method \App\Model\Entity\Occasion newEmptyEntity()
  * @method \App\Model\Entity\Occasion newEntity(array $data, array $options = [])
@@ -47,9 +47,8 @@ class OccasionsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Flowers', [
-            'foreignKey' => 'flower_id',
-            'joinType' => 'INNER',
+        $this->hasMany('Flowers', [
+            'foreignKey' => 'occasion_id',
         ]);
     }
 
@@ -78,19 +77,5 @@ class OccasionsTable extends Table
             ->notEmptyString('description');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn(['flower_id'], 'Flowers'));
-
-        return $rules;
     }
 }

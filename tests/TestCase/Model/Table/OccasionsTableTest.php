@@ -62,14 +62,4 @@ class OccasionsTableTest extends TestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 }

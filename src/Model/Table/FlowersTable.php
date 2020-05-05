@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Flowers Model
  *
- * @property \App\Model\Table\OccasionsTable&\Cake\ORM\Association\HasMany $Occasions
+ * @property \App\Model\Table\OccasionsTable&\Cake\ORM\Association\BelongsTo $Occasions
  *
  * @method \App\Model\Entity\Flower newEmptyEntity()
  * @method \App\Model\Entity\Flower newEntity(array $data, array $options = [])
@@ -47,8 +47,9 @@ class FlowersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Occasions', [
-            'foreignKey' => 'flower_id',
+        $this->belongsTo('Occasions', [
+            'foreignKey' => 'occasion_id',
+            'joinType' => 'INNER',
         ]);
     }
 
@@ -71,12 +72,6 @@ class FlowersTable extends Table
             ->notEmptyString('name');
 
         $validator
-            ->scalar('occasion')
-            ->maxLength('occasion', 32)
-            ->requirePresence('occasion', 'create')
-            ->notEmptyString('occasion');
-
-        $validator
             ->numeric('cost')
             ->requirePresence('cost', 'create')
             ->notEmptyString('cost');
@@ -87,5 +82,19 @@ class FlowersTable extends Table
             ->notEmptyString('quantity');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn(['occasion_id'], 'Occasions'));
+
+        return $rules;
     }
 }
